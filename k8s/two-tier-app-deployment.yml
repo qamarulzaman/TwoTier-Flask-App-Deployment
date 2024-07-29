@@ -2,10 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: two-tier-app
+  namespace: two-tier
   labels:
     app: two-tier-app
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: two-tier-app
@@ -19,7 +20,7 @@ spec:
           image: trainwithshubham/flaskapp:latest
           env:
             - name: MYSQL_HOST
-              value: "10.103.197.117"          # this is your mysql's service clusture IP, Make sure to change it with yours
+              value: "10.96.232.157"          # this is your mysql's service clusture IP, Make sure to change it with yours
             - name: MYSQL_PASSWORD
               value: "admin"
             - name: MYSQL_USER
